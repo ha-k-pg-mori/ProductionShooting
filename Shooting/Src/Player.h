@@ -22,13 +22,19 @@ public:
 
 	static Player* GetInstance();
 
+	
+
 private:
 	Vec2 Pos;
 	float Speed;
 	int Robot;
 
-	int Animation;
+	
+	int AnimationFrameCounter;
+	int AnimationId;
 	int Direction;
+
+	int MousyonList[];
 
 private:
 	static Player* m_pInstance;

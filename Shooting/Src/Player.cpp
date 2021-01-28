@@ -5,24 +5,23 @@
 
 Player::Player()
 {
-	
-
 	Player::Pos = Vec2(100.0f, 200.0f);
 
 	Player::Speed = 1.0f;
 
-	Player::Animation = 0;
+	Player::AnimationFrameCounter = 0;
+	Player::AnimationId = 0;
 
 	Player::Direction = 0;
 
 	Robot = LoadGraph("image/Robot_idle 1.PNG");
+
+	
 }
 
 Player::~Player()
 {
-	Animation = -1;
-	Direction = DirType_Up;
-	DeleteGraph(Robot);
+	
 }
 
 void Player::Init(Vec2 init_pos)
@@ -52,7 +51,7 @@ void Player::Update()
 	{
 		Pos.X += Speed;
 	}
-	if (pInputMng->IsPull(KeyType_Shoot))
+	if (pInputMng->IsPush(KeyType_Shoot))
 	{
 		p_BulletManager->CreateBullet(Vec2(Pos.X + 35.0f, Pos.Y + 28.0f));
 	}
@@ -73,39 +72,32 @@ void Player::Update()
 	{
 		Pos.Y = 420.0f;
 	}
+
+	if (AnimationFrameCounter % 5 == 0)
+	{
+		AnimationFrameCounter = 0;
+		AnimationId++;
+
+		if (AnimationId % 4 == 0)
+		{
+			AnimationId = 0;
+		}
+	}
 }
 
 void Player::Draw()
 {
 
 	//DrawGraph(Pos.X, Pos.Y, Robot, FALSE);
+	
+	int MosyonList[]
+	{
+		LoadGraph("image/Robot_idle 1.PNG"),
+		LoadGraph("image/Robot_idle 2.PNG"),
+		LoadGraph("image/Robot_idle 3.PNG"),
+	};
 
-	LoadGraphScreen(Pos.X, Pos.Y, "image/Robot_idle 1.PNG", TRUE);
-
-	/*if (Direction == DirType_Up)
-	{
-		if (Animation == 1)Animation = 2;
-		else if (Animation == 0)Animation = 1;
-		else if (Animation != 0)Animation = 0;
-	}
-	else if (Direction == DirType_Down)
-	{
-		if (Animation == 4)Animation = 5;
-		else if (Animation == 3)Animation = 4;
-		else if (Animation != 3)Animation = 3;
-	}
-	else if (Direction == DirType_Left)
-	{
-		if (Animation == 7)Animation = 8;
-		else if (Animation == 6)Animation = 7;
-		else if (Animation != 6)Animation = 6;
-	}
-	else
-	{
-		if (Animation == 10)Animation = 11;
-		else if (Animation == 9)Animation = 10;
-		else if (Animation != 9)Animation = 9;
-	}*/
+	DrawGraph(Pos.X, Pos.Y, MosyonList[AnimationId] , TRUE);
 }
 
 Player* Player::m_pInstance = nullptr;
