@@ -149,7 +149,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Src\InputManager.cpp" />
+    <ClCompile Include="Src\Player.cpp" />
     <ClCompile Include="WinMain.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Src\Definition.h" />
+    <ClInclude Include="Src\InputManager.h" />
+    <ClInclude Include="Src\KeyDefinition.h" />
+    <ClInclude Include="Src\Player.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

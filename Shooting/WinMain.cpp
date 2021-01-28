@@ -1,26 +1,39 @@
 #include "DxLib/DxLib.h"
 
-// ƒvƒƒOƒ‰ƒ€‚Í WinMain ‚©‚çŽn‚Ü‚è‚Ü‚·
+// ï¿½vï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ WinMain ï¿½ï¿½ï¿½ï¿½nï¿½Ü‚ï¿½Ü‚ï¿½
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
-	//ƒEƒCƒ“ƒhƒEƒ‚[ƒh‚É•ÏX
+	//ï¿½Eï¿½Cï¿½ï¿½ï¿½hï¿½Eï¿½ï¿½ï¿½[ï¿½hï¿½É•ÏX
 	ChangeWindowMode(TRUE);
 	SetWindowSizeExtendRate(0.5);
 	SetGraphMode(1920, 1080, 32);
 	
-	if (DxLib_Init() == -1)  // ‚c‚wƒ‰ƒCƒuƒ‰ƒŠ‰Šú‰»ˆ—
+	if (DxLib_Init() == -1)  // ï¿½cï¿½wï¿½ï¿½ï¿½Cï¿½uï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	{
-		return -1;   // ƒGƒ‰[‚ª‹N‚«‚½‚ç’¼‚¿‚ÉI—¹
+		return -1;   // ï¿½Gï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½ï¿½ï¿½ç’¼ï¿½ï¿½ï¿½ÉIï¿½ï¿½
 	}
 
-	
+	while (true)
+	{
+		// Windowsï¿½Ìƒï¿½ï¿½bï¿½Zï¿½[ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½ÉŽï¿½ï¿½sï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Aï¿½Â‚ï¿½ï¿½ï¿½ï¿½ß‚ï¿½ê‚½ï¿½ï¿½Iï¿½ï¿½
+		if (ProcessMessage() != 0) { break; }
 
-	//ü‚ðˆø‚­
+		// DxLibï¿½Ì‚ï¿½ï¿½ñ‘©Fï¿½ï¿½ÊƒNï¿½ï¿½ï¿½A
+		ClearDrawScreen();
+		clsDx();
+
+
+		// DxLibï¿½Ì‚ï¿½ï¿½ñ‘©Fï¿½ï¿½ÊXï¿½V
+		ScreenFlip();
+	}
+	
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	DrawLine(0, 0, 960, 540, GetColor(255, 0, 0));
 
-	WaitKey();    // ƒL[“ü—Í‘Ò‚¿
+	WaitKey();    // ï¿½Lï¿½[ï¿½ï¿½ï¿½Í‘Ò‚ï¿½
 
-	DxLib_End();    // ‚c‚wƒ‰ƒCƒuƒ‰ƒŠŽg—p‚ÌI—¹ˆ—
+	DxLib_End();    // ï¿½cï¿½wï¿½ï¿½ï¿½Cï¿½uï¿½ï¿½ï¿½ï¿½ï¿½gï¿½pï¿½ÌIï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-	return 0;    // ƒ\ƒtƒg‚ÌI—¹ 
+	return 0;    // ï¿½\ï¿½tï¿½gï¿½ÌIï¿½ï¿½ 
+	
 }
