@@ -8,12 +8,30 @@ class Player
 public:
 	Player();
 	~Player();
+	
+	void Init(Vec2 init_pos);
 
-	void Update();
-	void Draw();
+	virtual void Update();
+	virtual void Draw();
+
+	static void CreateInstance();
+
+	static void DestroyInstance();
+
+	static bool IsNull();
+
+	static Player* GetInstance();
 
 private:
 	Vec2 Pos;
+	float Speed;
+	int Robot;
+
+	int Animation;
+	int Direction;
+
+private:
+	static Player* m_pInstance;
 
 };
 

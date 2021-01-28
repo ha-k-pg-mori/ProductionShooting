@@ -1,39 +1,71 @@
 #include "DxLib/DxLib.h"
+#include "Src/Manager/SceneManager.h"
+#include "Src/Manager/GameManager.h"
+#include "Src/Manager/InputManager.h"
+#include "Src/Player.h"
+
 
 // �v���O������ WinMain ����n�܂�܂�
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
 	//�E�C���h�E���[�h�ɕύX
-	ChangeWindowMode(TRUE);
-	SetWindowSizeExtendRate(0.5);
-	SetGraphMode(1920, 1080, 32);
+	SetOutApplicationLogValidFlag(FALSE);  
+	ChangeWindowMode(TRUE);                
+	SetGraphMode(640, 480, 32);
+
+	SetMainWindowText("Shooting");
 	
-	if (DxLib_Init() == -1)  // �c�w���C�u��������������
+	if (DxLib_Init() == -1)  
 	{
-		return -1;   // �G���[���N�����璼���ɏI��
+		return -1;   
 	}
+
+	SetDrawScreen(DX_SCREEN_BACK);
+
+	GameManager::CreateInstance();
+	InputManager::CreateInstance();
+	SceneManager::CreateInstance();
+	Player::CreateInstance();
 
 	while (true)
 	{
-		// Windows�̃��b�Z�[�W�����Ɏ��s�������A�����߂�ꂽ��I��
+		
 		if (ProcessMessage() != 0) { break; }
 
-		// DxLib�̂��񑩁F��ʃN���A
+		
 		ClearDrawScreen();
 		clsDx();
 
+		
 
-		// DxLib�̂��񑩁F��ʍX�V
+		InputManager* pInputMng = InputManager::GetInstance();
+		SceneManager* pSceneMng = SceneManager::GetInstance();
+		
+
+
+		pInputMng->Update();
+		pSceneMng->Exec();
+		
+
+		pSceneMng->Draw();
+		
+		
+		
 		ScreenFlip();
 	}
+
+	InputManager::DestroyInstance();
+	InputManager::DestroyInstance();
+	GameManager::DestroyInstance();
 	
-		//�������
+	
+		
 	DrawLine(0, 0, 960, 540, GetColor(255, 0, 0));
 
-	WaitKey();    // �L�[���͑҂�
+	WaitKey();    
 
-	DxLib_End();    // �c�w���C�u�����g�p�̏I������
+	DxLib_End();    
 
-	return 0;    // �\�t�g�̏I�� 
+	return 0;   
 	
 }

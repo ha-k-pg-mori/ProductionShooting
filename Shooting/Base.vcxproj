@@ -43,7 +43,7 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -149,15 +149,33 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Src\Bullet.cpp" />
     <ClCompile Include="Src\InputManager.cpp" />
+    <ClCompile Include="Src\Manager\BulletManager.cpp" />
+    <ClCompile Include="Src\Manager\GameManager.cpp" />
+    <ClCompile Include="Src\Manager\InputManager.cpp" />
+    <ClCompile Include="Src\Manager\SceneManager.cpp" />
     <ClCompile Include="Src\Player.cpp" />
+    <ClCompile Include="Src\Scene\InGameScene.cpp" />
+    <ClCompile Include="Src\Scene\ResultScene.cpp" />
+    <ClCompile Include="Src\Scene\SceneBase.cpp" />
+    <ClCompile Include="Src\Scene\TitleScene.cpp" />
     <ClCompile Include="WinMain.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Src\Bullet.h" />
     <ClInclude Include="Src\Definition.h" />
     <ClInclude Include="Src\InputManager.h" />
     <ClInclude Include="Src\KeyDefinition.h" />
+    <ClInclude Include="Src\Manager\BulletManager.h" />
+    <ClInclude Include="Src\Manager\GameManager.h" />
+    <ClInclude Include="Src\Manager\InputManager.h" />
+    <ClInclude Include="Src\Manager\SceneManager.h" />
     <ClInclude Include="Src\Player.h" />
+    <ClInclude Include="Src\Scene\InGameScene.h" />
+    <ClInclude Include="Src\Scene\ResultScene.h" />
+    <ClInclude Include="Src\Scene\SceneBase.h" />
+    <ClInclude Include="Src\Scene\TitleScene.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

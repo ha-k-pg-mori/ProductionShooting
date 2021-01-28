@@ -12,6 +12,7 @@ enum KeyType
 	KeyType_Right, // �E�ړ�
 	KeyType_Enter, // ����
 	KeyType_Clear,
+	KeyType_Shoot,
 
 	KeyType_Max    // �L�[�̎�ނ̐�
 };
@@ -25,6 +26,7 @@ const int KEY_ASSIGN[KeyType_Max] =
 	KEY_INPUT_RIGHT,  // KeyType_Right
 	KEY_INPUT_RETURN, // KeyType_Enter
 	KEY_INPUT_C,
+	KEY_INPUT_Z,
 };
 
 #endif // !KEY_DEFINITION_H
