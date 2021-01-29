@@ -7,7 +7,7 @@ Player::Player()
 {
 	Player::Pos = Vec2(100.0f, 200.0f);
 
-	Player::Speed = 1.0f;
+	Player::Speed = 2.0f;
 
 	Player::AnimationFrameCounter = 0;
 	Player::AnimationId = 0;
@@ -15,8 +15,6 @@ Player::Player()
 	Player::Direction = 0;
 
 	Robot = LoadGraph("image/Robot_idle 1.PNG");
-
-	
 }
 
 Player::~Player()
@@ -73,12 +71,12 @@ void Player::Update()
 		Pos.Y = 420.0f;
 	}
 
-	if (AnimationFrameCounter % 5 == 0)
+	if (AnimationFrameCounter % 4 == 0)
 	{
 		AnimationFrameCounter = 0;
 		AnimationId++;
 
-		if (AnimationId % 4 == 0)
+		if (AnimationId % 3 == 0)
 		{
 			AnimationId = 0;
 		}
