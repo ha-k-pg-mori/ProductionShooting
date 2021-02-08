@@ -10,6 +10,8 @@ Player g_Player;
 Vec2 g_PlayerPos = Vec2(100.0f, 200.0f);
 BulletManager g_BulletManager;
 
+int g_Counter;
+
 enum
 {
 	STEP_START_JINGLE,
@@ -53,54 +55,26 @@ void InGameScene::Exec()
 	p_BulletManager->Update();
 
 	pPlayer->Update();
-
-	// @@Debug �J�ڊm�F�p�̉�����
-	// m_Step��J�E���g�A�b�v
-	/*m_Step++;
-	if (m_Step >= 120)
-	{
-		SceneManager::SetNextScene(SceneID_Result);
-	}*/
-	
-
 }
 
 void InGameScene::Draw()
 {		
 	Player* pPlayer = Player::GetInstance();
 	BulletManager* p_BulletManager = BulletManager::GetInstance();
+	InputManager* pInputMng = InputManager::GetInstance();
 
 	DrawExtendGraph(0, 0, 100 + 130 * 5, 0 + 480, BG, TRUE);
 
 	p_BulletManager->Draw();
 	pPlayer->Draw();
 
-
-
-	
-
-	//g_Player.Draw();
-
-	/*int MosyonList[]
-	{
-		
-	};*/
-	
-
-	//DrawGraph(m_PlayerX * CHIP_WIDTH, m_PlayerY * CHIP_HEIGHT, MosyonList[Animation], FALSE);
-
-	
-	/*if (IsClear())
-	{
-		DrawString(100, 240, "!! Game Clear !!", GetColor(250, 250, 250));
-	}*/
+	//pPlayer->number(g_Counter);
 
 	
 
-	DrawString(20, 20, "InGameScene", GetColor(0, 0, 0));
+	DrawFormatString(400, 20, Color, "%d", g_Counter);
 
-	//DrawFormatString(400, 20, Color, "%d", ClickCounter);
-	
+	DrawString(20, 20, "InGameScene", GetColor(0, 0, 0));	
 }
 
 bool InGameScene::IsEnd() const
@@ -112,7 +86,6 @@ bool InGameScene::IsEnd() const
 void InGameScene::step_StartJingle()
 {
 	set_Step(STEP_INPUT);
-
 }
 
 void InGameScene::step_Input()
@@ -165,8 +138,4 @@ void InGameScene::Move(DirType dir_)
 	{
 		return;
 	}
-
-	
-			
-	
 }

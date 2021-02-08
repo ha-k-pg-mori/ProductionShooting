@@ -12,9 +12,7 @@ Player::Player()
 	Player::AnimationFrameCounter = 0;
 	Player::AnimationId = 0;
 
-	Player::Direction = 0;
-
-	Robot = LoadGraph("image/Robot_idle 1.PNG");
+	Player::counter = 0;
 }
 
 Player::~Player()
@@ -29,7 +27,6 @@ void Player::Init(Vec2 init_pos)
 
 void Player::Update()
 {
-	
 	BulletManager* p_BulletManager = BulletManager::GetInstance();
 	InputManager* pInputMng = InputManager::GetInstance();
 
@@ -53,6 +50,8 @@ void Player::Update()
 	{
 		p_BulletManager->CreateBullet(Vec2(Pos.X + 35.0f, Pos.Y + 28.0f));
 	}
+	
+	
 
 	if (Pos.X < 0.0f)
 	{
@@ -95,8 +94,18 @@ void Player::Draw()
 		LoadGraph("image/Robot_idle 3.PNG"),
 	};
 
-	DrawGraph(Pos.X, Pos.Y, MosyonList[AnimationId] , TRUE);
+	DrawGraph(Pos.X, Pos.Y, MosyonList[AnimationId],TRUE);
 }
+
+//Player* Player::number(int Counter)
+//{
+//	/*counter = Counter;
+//	InputManager* pInputMng = InputManager::GetInstance();
+//	if (pInputMng->IsPush(KeyType_Counter))
+//	{
+//		counter += 1;
+//	}*/
+//}
 
 Player* Player::m_pInstance = nullptr;
 

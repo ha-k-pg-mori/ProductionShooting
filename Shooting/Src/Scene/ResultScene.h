@@ -9,6 +9,8 @@ class ResultScene : public SceneBase
 public:
 	ResultScene();
 	virtual~ResultScene();
+
+	int Color = GetColor(255, 255, 255);
 	
 public:
 	virtual void Exec();  // ˆ—‚ğs‚¤
@@ -17,6 +19,7 @@ public:
 	virtual bool IsEnd() const;
 
 	int Result;
+	int g_Couter;
 
 private:
 	void step_Input();

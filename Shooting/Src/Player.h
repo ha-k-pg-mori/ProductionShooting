@@ -14,6 +14,8 @@ public:
 	virtual void Update();
 	virtual void Draw();
 
+	//Player* number(int Counter);
+
 	static void CreateInstance();
 
 	static void DestroyInstance();
@@ -27,12 +29,11 @@ public:
 private:
 	Vec2 Pos;
 	float Speed;
-	int Robot;
-
 	
 	int AnimationFrameCounter;
 	int AnimationId;
-	int Direction;
+
+	int counter;
 
 	int MousyonList[];
 

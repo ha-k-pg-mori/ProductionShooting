@@ -13,24 +13,11 @@ public:
 	virtual void Update();
 	virtual void Draw();
 
-	static void CreateInstance();
-
-	static void DestroyInstance();
-
-	static bool IsNull();
-
-	static Bullet* GetInstance();
-
 	bool IsActive;
 
 private:
 	Vec2 Pos;
 	float Speed;
-	
-	
-
-private:
-	static Bullet* m_pInstance;
 };
 
 #endif // 

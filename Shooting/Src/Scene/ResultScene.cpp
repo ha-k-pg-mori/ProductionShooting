@@ -2,8 +2,7 @@
 #include "DxLib.h"
 #include "../Manager/SceneManager.h"
 #include "../Manager/InputManager.h"
-
-
+#include "../Player.h"
 
 enum
 {
@@ -14,6 +13,7 @@ enum
 
 ResultScene::ResultScene()
 {
+	Player::CreateInstance();
 	set_Step(STEP_LOGO_IN);
 	Result = LoadGraph("data/Clear.png");
 }
@@ -56,7 +56,11 @@ void ResultScene::Draw()
 
 	DrawString(20, 20, "ResultScene", GetColor(255, 255, 255));
 
-	//DrawFormatString(400, 20, Color, "%d", ClickCounter);
+	Player* pPlayer = Player::GetInstance();
+	
+	//pPlayer->number(g_Couter);
+
+	DrawFormatString(400, 20, Color, "%d", g_Couter);
 }
 
 bool ResultScene::IsEnd() const
